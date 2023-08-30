@@ -1,7 +1,14 @@
-export default function App() {
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "./components";
+
+const App = () => {
   return (
-    <div className="flex h-screen w-screen items-center justify-center text-blue-600">
-      App
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}></Route>
+      </Routes>
     </div>
   );
-}
+};
+
+export default App;

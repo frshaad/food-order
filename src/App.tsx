@@ -3,7 +3,7 @@ import { Layout } from "./components";
 
 const App = () => {
   return (
-    <div>
+    <div className="flex h-auto w-screen flex-col">
       <Routes>
         <Route path="/" element={<Layout />}></Route>
       </Routes>

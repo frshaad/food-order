@@ -2,14 +2,17 @@ import { motion } from "framer-motion";
 import { signInWithPopup } from "firebase/auth";
 
 import { auth, googleProvider } from "../../firebase";
+import { useAppDispatch } from "../../app/hooks";
+import { setUser } from "../../app/userSlice";
 import avatar from "../../assets/img/avatar.png";
 
 const UserProfileIcon = () => {
+  const dispatch = useAppDispatch();
+
   const login = async () => {
     const response = await signInWithPopup(auth, googleProvider);
     const { user } = response;
-    const { displayName } = user;
-    console.log(displayName);
+    dispatch(setUser(user));
   };
 
   return (

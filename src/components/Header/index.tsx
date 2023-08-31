@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { MdShoppingBasket } from "react-icons/md";
-import logo from "../assets/img/logo.png";
-import avatar from "../assets/img/avatar.png";
-import { NAV_LINKS } from "../constants";
+import logo from "../../assets/img/logo.png";
+import { NAV_LINKS } from "../../constants";
+import UserProfileIcon from "./UserProfileIcon";
 
 const NavLinks = () => (
   <ul className="flex items-center gap-8 capitalize">
@@ -24,14 +24,6 @@ const CartButton = () => (
       3
     </span>
   </button>
-);
-
-const UserProfileIcon = () => (
-  <img
-    src={avatar}
-    alt="user profile picture"
-    className="w-10 drop-shadow-xl"
-  />
 );
 
 const Header = () => {

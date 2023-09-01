@@ -1,6 +1,5 @@
-import { useContext, createContext, useReducer } from "react";
-import { UserState } from "../types";
-import { ActionProps } from "./reducer";
+import { createContext, useReducer } from "react";
+import { ActionProps, UserState } from "../types";
 
 type Props = {
   reducer: (state: UserState, action: ActionProps) => UserState;
@@ -8,12 +7,11 @@ type Props = {
   children: React.ReactNode;
 };
 
-// Todo: change context type
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const StateContext = createContext<any>(null);
+type StateContextType = [UserState, React.Dispatch<ActionProps>];
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useStateValue = () => useContext(StateContext);
+export const StateContext = createContext<StateContextType>(
+  null as unknown as StateContextType,
+);
 
 export const StateProvider = ({ reducer, initialState, children }: Props) => {
   return (

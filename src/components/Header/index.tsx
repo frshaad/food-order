@@ -1,24 +1,28 @@
+import clsx from "clsx";
+import { useMediaQuery } from "@mantine/hooks";
 import UserProfileIcon from "./UserProfileIcon";
 import CartButton from "./CartButton";
 import NavLinks from "./NavLinks";
 import Logo from "./Logo";
 
 const Header = () => {
+  const matchesMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16">
-      <div className="hidden justify-between md:flex">
+      <div
+        className={clsx("justify-between", {
+          "flex items-center md:hidden": matchesMobile,
+          "hidden md:flex": !matchesMobile,
+        })}
+      >
+        {matchesMobile ? <CartButton /> : null}
         <Logo />
         <div className="flex items-center gap-8">
-          <NavLinks />
-          <CartButton />
+          {matchesMobile ? null : <NavLinks />}
+          {matchesMobile ? null : <CartButton />}
           <UserProfileIcon />
         </div>
-      </div>
-
-      {/* //TODO: Mobile */}
-      <div className="flex items-center justify-between md:hidden">
-        <Logo />
-        <UserProfileIcon />
       </div>
     </header>
   );

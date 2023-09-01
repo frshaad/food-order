@@ -16,6 +16,7 @@ const UserProfileIcon = () => {
       type: ActionType.SET_USER,
       user,
     });
+    localStorage.setItem("user", JSON.stringify(user));
   };
 
   return (
@@ -23,7 +24,11 @@ const UserProfileIcon = () => {
       <button onClick={login}>
         <motion.img
           whileTap={{ scale: 0.7 }}
-          src={currentUser?.photoURL ? currentUser.photoURL : avatar}
+          src={
+            currentUser?.providerData[0].photoURL
+              ? currentUser.providerData[0].photoURL
+              : avatar
+          }
           alt="user profile picture"
           className="w-10 cursor-pointer rounded-full drop-shadow-xl"
         />

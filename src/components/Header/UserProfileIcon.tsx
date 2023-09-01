@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
-import { signInWithPopup } from "firebase/auth";
 
-import { auth, googleProvider } from "../../firebase";
 import { useStateValue } from "../../context/initialState";
-import { ActionType } from "../../types";
 import avatar from "../../assets/img/avatar.png";
+import logIn from "../../utils/loginWittGoogle";
 
 const UserProfileIcon = () => {
   const [state, dispatch] = useStateValue();
   const { user: currentUser } = state;
 
-  const login = async () => {
-    const { user } = await signInWithPopup(auth, googleProvider);
-    dispatch({
-      type: ActionType.SET_USER,
-      user,
-    });
-    localStorage.setItem("user", JSON.stringify(user));
+  const openMenu = () => {
+    console.log("menu opened!");
+  };
+
+  const handleUserProfileClick = () => {
+    if (!currentUser) {
+      logIn(dispatch);
+    } else {
+      openMenu();
+    }
   };
 
   return (
     <div className="relative">
-      <button onClick={login}>
+      <button onClick={handleUserProfileClick}>
         <motion.img
           whileTap={{ scale: 0.7 }}
           src={

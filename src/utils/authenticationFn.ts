@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase";
 import { ActionProps, ActionType } from "../types";
 
@@ -13,9 +13,4 @@ export const loginWithGoogle = async (
     user,
   });
   localStorage.setItem("user", JSON.stringify(user));
-};
-
-export const logOut = async () => {
-  const response = await signOut(auth);
-  console.log("response", response);
 };

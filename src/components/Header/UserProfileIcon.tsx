@@ -5,6 +5,7 @@ import DropDownMenu from "./DropDownMenu";
 import { useStateValue } from "../../context/initialState";
 import { loginWithGoogle } from "../../utils/authenticationFn";
 import unknownUserAvatar from "../../assets/img/avatar.png";
+import { ActionType } from "../../types";
 
 const UserProfileIcon = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -17,6 +18,15 @@ const UserProfileIcon = () => {
     } else {
       setIsDropDownOpen(!isDropDownOpen);
     }
+  };
+
+  const handleLogOut = () => {
+    setIsDropDownOpen(false);
+    localStorage.clear();
+    dispatch({
+      type: ActionType.SET_USER,
+      user: null,
+    });
   };
 
   return (
@@ -34,7 +44,9 @@ const UserProfileIcon = () => {
         />
       </button>
 
-      {isDropDownOpen ? <DropDownMenu user={currentUser} /> : null}
+      {isDropDownOpen ? (
+        <DropDownMenu handleLogOut={handleLogOut} user={currentUser} />
+      ) : null}
     </div>
   );
 };

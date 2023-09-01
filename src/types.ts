@@ -10,5 +10,5 @@ export enum ActionType {
 
 export type ActionProps = {
   type: ActionType;
-  user: User;
+  user: User | null;
 };

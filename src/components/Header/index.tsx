@@ -5,7 +5,7 @@ import Logo from "./Logo";
 
 const Header = () => {
   return (
-    <header className="fixed z-50 w-screen p-6 px-16">
+    <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16">
       <div className="hidden justify-between md:flex">
         <Logo />
         <div className="flex items-center gap-8">
@@ -16,8 +16,9 @@ const Header = () => {
       </div>
 
       {/* //TODO: Mobile */}
-      <div className="flex md:hidden">
+      <div className="flex items-center justify-between md:hidden">
         <Logo />
+        <UserProfileIcon />
       </div>
     </header>
   );

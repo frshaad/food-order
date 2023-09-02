@@ -32,11 +32,11 @@ const ShowcaseInfo = () => (
 );
 
 const ShowcaseProducts = () => (
-  <div className="relative z-50 flex-1 py-2 md:mt-24 lg:mt-0">
+  <div className="relative flex-1 py-2 md:mt-24 lg:mt-0">
     <img
       src={heroBg}
       alt="hero background"
-      className="absolute right-1/2 top-0 -z-10 h-800 translate-x-1/2 md:h-685 lg:right-0 lg:translate-x-0 2xl:-translate-x-16"
+      className="absolute right-1/2 top-0 h-800 translate-x-1/2 md:h-685 lg:right-0 lg:translate-x-0 2xl:-translate-x-16"
     />
     <div className="placc mx-auto grid max-w-xl grid-cols-1 justify-items-center gap-y-20 p-10 pt-16 md:grid-cols-2">
       {showcaseData.map((item) => (

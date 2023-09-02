@@ -45,7 +45,11 @@ const UserProfileIcon = () => {
       </button>
 
       {isDropDownOpen ? (
-        <DropDownMenu handleLogOut={handleLogOut} user={currentUser} />
+        <DropDownMenu
+          handleLogOut={handleLogOut}
+          setIsDropDownOpen={setIsDropDownOpen}
+          user={currentUser}
+        />
       ) : null}
     </div>
   );

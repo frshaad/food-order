@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 import Logo from "./Logo";
 
 const Header = () => {
-  const matchesMobile = useMediaQuery("(max-width: 768px)");
+  const matchesMobile = useMediaQuery("(max-width: 760px)");
 
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16">

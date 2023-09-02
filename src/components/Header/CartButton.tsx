@@ -7,7 +7,7 @@ const CartButton = () => (
     whileTap={{ scale: 0.9 }}
   >
     <MdShoppingBasket />
-    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-cartNumBg p-2 text-sm font-semibold text-white">
+    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-600 p-2 text-sm font-semibold text-white drop-shadow-lg">
       3
     </span>
   </motion.button>

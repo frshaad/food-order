@@ -38,7 +38,7 @@ const MobileNavLinks = () => (
 );
 
 const DropDownMenu = ({ user, handleLogOut }: Props) => {
-  const matchesMobile = useMediaQuery("(max-width: 768px)");
+  const matchesMobile = useMediaQuery("(max-width: 760px)");
 
   return (
     <motion.ul

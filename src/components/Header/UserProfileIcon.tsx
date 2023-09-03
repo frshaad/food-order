@@ -39,7 +39,7 @@ const UserProfileIcon = () => {
               ? currentUser.providerData[0].photoURL
               : unknownUserAvatar
           }
-          alt="user profile picture"
+          alt="user pic"
           className="w-10 cursor-pointer rounded-full drop-shadow-xl"
         />
       </button>

@@ -12,3 +12,12 @@ export type ActionProps = {
   type: ActionType;
   user: User | null;
 };
+
+export type FoodCategory =
+  | "Chicken"
+  | "Curry"
+  | "Rice"
+  | "Fish"
+  | "Fruits"
+  | "Icecreams"
+  | "Soft Drinks";

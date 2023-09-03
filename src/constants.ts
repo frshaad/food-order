@@ -5,6 +5,7 @@ import {
   MdOutlineRoomService,
 } from "react-icons/md";
 
+import type { FoodCategory } from "./types";
 import I1 from "./assets/img/i1.png";
 import F1 from "./assets/img/f1.png";
 import C3 from "./assets/img/c3.png";
@@ -65,5 +66,48 @@ export const showcaseData = [
     description: "Mixed Fish Kebab",
     price: "5.25",
     imageSrc: Fi1,
+  },
+];
+
+export const categories: {
+  id: number;
+  name: FoodCategory;
+  urlParamName: string;
+}[] = [
+  {
+    id: 1,
+    name: "Chicken",
+    urlParamName: "chicken",
+  },
+  {
+    id: 2,
+    name: "Curry",
+    urlParamName: "curry",
+  },
+  {
+    id: 3,
+    name: "Rice",
+    urlParamName: "rice",
+  },
+  {
+    id: 4,
+    name: "Fish",
+    urlParamName: "fish",
+  },
+  {
+    id: 5,
+    name: "Fruits",
+    urlParamName: "fruits",
+  },
+  {
+    id: 6,
+    name: "Icecreams",
+    urlParamName: "icecreams",
+  },
+
+  {
+    id: 7,
+    name: "Soft Drinks",
+    urlParamName: "drinks",
   },
 ];

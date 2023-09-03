@@ -14,7 +14,7 @@ const CreateItem = () => {
   const [category, setCategory] = useState("");
   const [calories, setCalories] = useState(100);
   const [price, setPrice] = useState(5);
-  const [imageAsset, setImageAsset] = useState(null);
+  const [imageAsset, setImageAsset] = useState<null | string>(null);
 
   const saveDetails = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +37,12 @@ const CreateItem = () => {
         </div>
         <TextInput title={title} setTitle={setTitle} />
         <SelectCategory category={category} setCategory={setCategory} />
-        <FileUploadInput imageAsset={imageAsset} isLoading={isLoading} />
+        <FileUploadInput
+          imageAsset={imageAsset}
+          setImageAsset={setImageAsset}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <NumberInput
             title="Calories"

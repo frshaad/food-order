@@ -1,17 +1,66 @@
 import { MdDeleteOutline } from "react-icons/md";
 import { LoaderSpinner } from "../reusable";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { storage } from "../../firebase";
+import { useState } from "react";
 
 type Props = {
+  imageAsset: null | string;
   isLoading: boolean;
-  imageAsset: null;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setImageAsset: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const FileUploadInput = ({ imageAsset, isLoading }: Props) => {
-  const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {};
-  const deleteImage = () => {};
+const FileUploadInput = ({
+  imageAsset,
+  isLoading,
+  setIsLoading,
+  setImageAsset,
+}: Props) => {
+  const [_progessbar, setProgessbar] = useState(0);
+
+  const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true);
+    const imageFile = e.target.files![0];
+    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshop) => {
+        const uploadProgress =
+          (snapshop.bytesTransferred / snapshop.totalBytes) * 100;
+        setProgessbar(uploadProgress);
+      },
+      (error) => {
+        console.log("error happened in image's upload process:", error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImageAsset(downloadURL);
+          setIsLoading(false);
+        });
+      },
+    );
+  };
+
+  const deleteImage = () => {
+    setIsLoading(true);
+    const deleteRef = ref(storage, imageAsset as string);
+    deleteObject(deleteRef).then(() => {
+      setImageAsset(null);
+      setIsLoading(false);
+      console.log("Image deleted successfully");
+    });
+  };
 
   return (
-    <div className="group flex h-32 w-full flex-col items-center justify-center rounded-[7px] border border-gray-200 p-2">
+    <div className="group relative flex h-52 w-full flex-col items-center justify-center rounded-[7px] border border-gray-200 p-2">
       {isLoading ? (
         <LoaderSpinner />
       ) : !imageAsset ? (
@@ -29,14 +78,14 @@ const FileUploadInput = ({ imageAsset, isLoading }: Props) => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke="currentColor"
                 aria-hidden="true"
                 className="h-5 w-5"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
                 ></path>
               </svg>
@@ -54,8 +103,8 @@ const FileUploadInput = ({ imageAsset, isLoading }: Props) => {
           </label>
         </>
       ) : (
-        <div className="relative flex h-full items-center gap-8">
-          <img src={imageAsset} alt="uploaded image" />
+        <div className="relative flex h-full flex-col items-center gap-8">
+          <img src={imageAsset} alt="uploaded image" className="h-2/3" />
           <button
             className="flex w-fit select-none items-center gap-3 rounded-lg border border-red-500 px-3 py-1 text-center align-middle font-sans text-xs font-bold uppercase text-red-500 transition-all hover:opacity-75 focus:ring focus:ring-red-200 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"

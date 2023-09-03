@@ -21,3 +21,13 @@ export type FoodCategory =
   | "Fruits"
   | "Icecreams"
   | "Soft Drinks";
+
+export type Food = {
+  id: string;
+  title: string;
+  category: FoodCategory;
+  imageUrl: string;
+  price: number;
+  calories: number;
+  qty: number;
+};

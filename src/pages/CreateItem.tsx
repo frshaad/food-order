@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { MdOutlineFastfood } from "react-icons/md";
 import {
   FileUploadInput,
@@ -7,19 +8,51 @@ import {
   SelectCategory,
   TextInput,
 } from "../components/createItem";
+import { Food, FoodCategory } from "../types";
+import { firebaseSaveItem } from "../utils/firebaseFns";
 
 const CreateItem = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState<FoodCategory>("Chicken");
   const [calories, setCalories] = useState(100);
   const [price, setPrice] = useState(5);
   const [imageAsset, setImageAsset] = useState<null | string>(null);
+  const isAnyFieldEmpty =
+    !title || !category || !calories || !price || !imageAsset;
+
+  const clearInputFileds = () => {
+    setTitle("");
+    setCategory("Chicken");
+    setCalories(0);
+    setImageAsset(null);
+    setPrice(0);
+  };
 
   const saveDetails = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    // ...
+    try {
+      if (isAnyFieldEmpty) {
+        console.log("One filed is empty!");
+      } else {
+        const foodData: Food = {
+          id: uuidv4(),
+          title,
+          imageUrl: imageAsset,
+          calories,
+          category,
+          price,
+          qty: 1,
+        };
+        firebaseSaveItem(foodData);
+        setIsLoading(false);
+        clearInputFileds();
+        console.log("Data uploaded successfully");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
     setIsLoading(false);
   };
 

@@ -15,9 +15,10 @@ const CreateItem = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState<FoodCategory>("Chicken");
+  const [imageAsset, setImageAsset] = useState<null | string>(null);
   const [calories, setCalories] = useState(100);
   const [price, setPrice] = useState(5);
-  const [imageAsset, setImageAsset] = useState<null | string>(null);
+
   const isAnyFieldEmpty =
     !title || !category || !calories || !price || !imageAsset;
 

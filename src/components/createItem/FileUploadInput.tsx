@@ -7,7 +7,6 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../../firebase";
-import { useState } from "react";
 
 type Props = {
   imageAsset: null | string;
@@ -22,23 +21,43 @@ const FileUploadInput = ({
   setIsLoading,
   setImageAsset,
 }: Props) => {
-  const [_progessbar, setProgessbar] = useState(0);
-
+  // Upload image
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
     const imageFile = e.target.files![0];
-    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+    const imageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+
+    const uploadTask = uploadBytesResumable(imageRef, imageFile);
 
     uploadTask.on(
       "state_changed",
       (snapshop) => {
-        const uploadProgress =
-          (snapshop.bytesTransferred / snapshop.totalBytes) * 100;
-        setProgessbar(uploadProgress);
+        const uploadProgress = Math.floor(
+          (snapshop.bytesTransferred / snapshop.totalBytes) * 100,
+        );
+        console.log("Upload is " + uploadProgress + "% done");
+
+        switch (snapshop.state) {
+          case "running":
+            console.log("Upload is running");
+            break;
+          case "paused":
+            console.log("Upload is paused");
+            break;
+        }
       },
       (error) => {
-        console.log("error happened in image's upload process:", error);
+        switch (error.code) {
+          case "storage/unauthorized":
+            console.log("User doesn't have permission to access the object");
+            break;
+          case "storage/canceled":
+            console.log("User canceled the upload");
+            break;
+          case "storage/unknown":
+            console.log("Unknown error occurred, inspect error.serverResponse");
+            break;
+        }
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -49,14 +68,19 @@ const FileUploadInput = ({
     );
   };
 
+  // Delete image
   const deleteImage = () => {
     setIsLoading(true);
     const deleteRef = ref(storage, imageAsset as string);
-    deleteObject(deleteRef).then(() => {
-      setImageAsset(null);
-      setIsLoading(false);
-      console.log("Image deleted successfully");
-    });
+    deleteObject(deleteRef)
+      .then(() => {
+        setImageAsset(null);
+        setIsLoading(false);
+        console.log("Image deleted successfully");
+      })
+      .catch((error) => {
+        console.log("Can not delete the file: ", error);
+      });
   };
 
   return (

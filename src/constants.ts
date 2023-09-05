@@ -6,10 +6,10 @@ import {
 } from "react-icons/md";
 
 import type { FoodCategory } from "./types";
-import I1 from "./assets/img/i1.png";
-import F1 from "./assets/img/f1.png";
-import C3 from "./assets/img/c3.png";
-import Fi1 from "./assets/img/fi1.png";
+import I1 from "./assets/img/i1.webp";
+import F1 from "./assets/img/f1.webp";
+import C3 from "./assets/img/c3.webp";
+import Fi1 from "./assets/img/fi1.webp";
 
 export const NAV_LINKS = [
   {

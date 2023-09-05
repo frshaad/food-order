@@ -35,16 +35,11 @@ const FileUploadInput = ({
         const uploadProgress = Math.floor(
           (snapshop.bytesTransferred / snapshop.totalBytes) * 100,
         );
-        console.log("Upload is " + uploadProgress + "% done");
-
-        switch (snapshop.state) {
-          case "running":
-            console.log("Upload is running");
-            break;
-          case "paused":
-            console.log("Upload is paused");
-            break;
-        }
+        console.log(
+          uploadProgress === 100
+            ? "The image is uploaded!"
+            : "Upload is " + uploadProgress + "% done",
+        );
       },
       (error) => {
         switch (error.code) {

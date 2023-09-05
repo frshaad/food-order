@@ -70,7 +70,7 @@ const CreateItem = () => {
           </h1>
         </div>
         <TextInput title={title} setTitle={setTitle} />
-        <SelectCategory category={category} setCategory={setCategory} />
+        <SelectCategory setCategory={setCategory} />
         <FileUploadInput
           imageAsset={imageAsset}
           setImageAsset={setImageAsset}

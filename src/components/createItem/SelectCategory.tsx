@@ -2,11 +2,10 @@ import { categories } from "../../constants";
 import { FoodCategory } from "../../types";
 
 type Props = {
-  category: string;
   setCategory: React.Dispatch<React.SetStateAction<FoodCategory>>;
 };
 
-const SelectCategory = ({ category, setCategory }: Props) => {
+const SelectCategory = ({ setCategory }: Props) => {
   return (
     <div className="relative h-10 w-full min-w-[200px]">
       <select
@@ -14,7 +13,6 @@ const SelectCategory = ({ category, setCategory }: Props) => {
         required
         onChange={(e) => {
           setCategory(e.target.value as FoodCategory);
-          console.log(category);
         }}
       >
         {categories.map((opt) => (

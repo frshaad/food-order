@@ -1,6 +1,6 @@
 import { PrimaryButton, ProductCard } from "../reusable";
-import delivery from "../../assets/img/delivery.png";
-import heroBg from "../../assets/img/heroBg.png";
+import delivery from "../../assets/img/delivery.webp";
+import heroBg from "../../assets/img/heroBg.webp";
 import { showcaseData } from "../../constants";
 
 const BikeDelivery = () => (

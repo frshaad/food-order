@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import DropDownMenu from "./DropDownMenu";
 import { useStateValue } from "../../context/initialState";
 import { loginWithGoogle } from "../../utils/authenticationFn";
-import unknownUserAvatar from "../../assets/img/avatar.png";
+import unknownUserAvatar from "../../assets/img/avatar.webp";
 import { ActionType } from "../../types";
 
 const UserProfileIcon = () => {

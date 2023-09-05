@@ -1,7 +1,7 @@
-import { PrimaryButton, ProductCard } from "../reusable";
 import delivery from "../../assets/img/delivery.webp";
 import heroBg from "../../assets/img/heroBg.webp";
 import { showcaseData } from "../../constants";
+import { PrimaryButton, ProductCard } from "../reusable";
 
 const BikeDelivery = () => (
   <div className="flex w-fit items-center gap-2 rounded-full bg-orange-100 px-4 py-1">

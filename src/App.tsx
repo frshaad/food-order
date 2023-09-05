@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { Route,Routes } from "react-router-dom";
+
 import { Layout } from "./components";
 import { CreateItem, Home } from "./pages";
 

@@ -1,12 +1,13 @@
-import { MdDeleteOutline } from "react-icons/md";
-import { LoaderSpinner } from "../reusable";
 import {
   deleteObject,
   getDownloadURL,
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { MdDeleteOutline } from "react-icons/md";
+
 import { storage } from "../../firebase";
+import { LoaderSpinner } from "../reusable";
 
 type Props = {
   imageAsset: null | string;

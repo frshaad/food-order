@@ -1,7 +1,8 @@
 import { useContext } from "react";
+
 import { UserState } from "../types";
-import { StateContext } from "./UserContext";
 import { fetchUser } from "../utils/fetchLocalStorageData";
+import { StateContext } from "./UserContext";
 
 const userInfo = fetchUser();
 

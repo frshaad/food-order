@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import logo from "../../assets/img/logo.webp";
 
 const Logo = () => {

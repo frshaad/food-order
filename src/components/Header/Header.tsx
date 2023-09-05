@@ -1,9 +1,10 @@
-import clsx from "clsx";
 import { useMediaQuery } from "@mantine/hooks";
-import UserProfileIcon from "./UserProfileIcon";
+import clsx from "clsx";
+
 import CartButton from "./CartButton";
-import NavLinks from "./NavLinks";
 import Logo from "./Logo";
+import NavLinks from "./NavLinks";
+import UserProfileIcon from "./UserProfileIcon";
 
 const Header = () => {
   const matchesMobile = useMediaQuery("(max-width: 760px)");

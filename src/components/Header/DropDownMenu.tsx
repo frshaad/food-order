@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { useMediaQuery } from "@mantine/hooks";
 import { User } from "firebase/auth";
 import { motion } from "framer-motion";
-import { useMediaQuery } from "@mantine/hooks";
-import { MdOutlineAdd, MdLogout } from "react-icons/md";
+import { MdLogout, MdOutlineAdd } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 import { NAV_LINKS } from "../../constants";
 
 type DropDownProps = {

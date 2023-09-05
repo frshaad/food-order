@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { NAV_LINKS } from "../../constants";
 
 const NavLinks = () => (

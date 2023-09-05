@@ -5,11 +5,11 @@ import {
   MdOutlineRoomService,
 } from "react-icons/md";
 
-import type { FoodCategory } from "./types";
-import I1 from "./assets/img/i1.webp";
-import F1 from "./assets/img/f1.webp";
 import C3 from "./assets/img/c3.webp";
+import F1 from "./assets/img/f1.webp";
 import Fi1 from "./assets/img/fi1.webp";
+import I1 from "./assets/img/i1.webp";
+import type { FoodCategory } from "./types";
 
 export const NAV_LINKS = [
   {
@@ -107,7 +107,7 @@ export const categories: {
 
   {
     id: 7,
-    name: "Soft Drinks",
+    name: "Drinks",
     urlParamName: "drinks",
   },
 ];

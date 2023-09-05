@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-import DropDownMenu from "./DropDownMenu";
-import { useStateValue } from "../../context/initialState";
-import { loginWithGoogle } from "../../utils/authenticationFn";
 import unknownUserAvatar from "../../assets/img/avatar.webp";
+import { useStateValue } from "../../context/initialState";
 import { ActionType } from "../../types";
+import { loginWithGoogle } from "../../utils/authenticationFn";
+import DropDownMenu from "./DropDownMenu";
 
 const UserProfileIcon = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);

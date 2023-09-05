@@ -20,7 +20,8 @@ export type FoodCategory =
   | "Fish"
   | "Fruits"
   | "Icecreams"
-  | "Drinks";
+  | "Drinks"
+  | "empty";
 
 export type Food = {
   id: string;

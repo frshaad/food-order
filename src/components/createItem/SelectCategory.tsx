@@ -11,12 +11,16 @@ const SelectCategory = ({ setCategory }: Props) => {
       <select
         className="peer h-full w-full rounded-[7px] border border-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 empty:!bg-red-500 focus:border-2 focus:border-orange-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-gray-50"
         required
+        defaultValue="empty"
         onChange={(e) => {
           setCategory(e.target.value as FoodCategory);
         }}
       >
+        <option disabled value="empty" style={{ display: "none" }}>
+          -- Select a category --
+        </option>
         {categories.map((opt) => (
-          <option key={opt.id} value={opt.urlParamName}>
+          <option key={opt.id} value={opt.name} className="capitalize">
             {opt.name}
           </option>
         ))}

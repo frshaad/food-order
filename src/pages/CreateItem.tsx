@@ -15,7 +15,7 @@ import { firebaseSaveItem } from "../utils/firebaseFns";
 const CreateItem = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState<FoodCategory>("Chicken");
+  const [category, setCategory] = useState<FoodCategory>("empty");
   const [imageAsset, setImageAsset] = useState<null | string>(null);
   const [calories, setCalories] = useState(100);
   const [price, setPrice] = useState(5);
@@ -25,7 +25,7 @@ const CreateItem = () => {
 
   const clearInputFileds = () => {
     setTitle("");
-    setCategory("Chicken");
+    setCategory("empty");
     setCalories(0);
     setImageAsset(null);
     setPrice(0);
@@ -37,6 +37,8 @@ const CreateItem = () => {
     try {
       if (isAnyFieldEmpty) {
         console.log("there is an empty field!");
+      } else if (category === "empty") {
+        console.log("Please select a category for food!");
       } else {
         const foodData: Food = {
           id: uuidv4(),

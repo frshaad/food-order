@@ -1,10 +1,10 @@
 import { doc, setDoc } from "firebase/firestore";
-import { firestore } from "../firebase";
+import { db } from "../firebase";
 import { Food } from "../types";
 
-// Save new item
+// Save new item to firestore db
 export const firebaseSaveItem = async (item: Food) => {
-  await setDoc(doc(firestore, "foodItems", `${Date.now()}`), item, {
+  await setDoc(doc(db, "foods", `${item.id}-${item.title}`), item, {
     merge: true,
   });
 };

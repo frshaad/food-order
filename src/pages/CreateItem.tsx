@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { MdOutlineFastfood } from "react-icons/md";
+import { v4 as uuidv4 } from "uuid";
 import {
   FileUploadInput,
   NumberInput,
@@ -35,7 +35,7 @@ const CreateItem = () => {
     setIsLoading(true);
     try {
       if (isAnyFieldEmpty) {
-        console.log("One filed is empty!");
+        console.log("there is an empty field!");
       } else {
         const foodData: Food = {
           id: uuidv4(),

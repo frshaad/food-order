@@ -21,7 +21,7 @@ const FileUploadInput = ({
   setIsLoading,
   setImageAsset,
 }: Props) => {
-  // Upload image
+  // Upload image to firebase storage
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
     const imageFile = e.target.files![0];
@@ -68,7 +68,7 @@ const FileUploadInput = ({
     );
   };
 
-  // Delete image
+  // Delete image from firebase storage
   const deleteImage = () => {
     setIsLoading(true);
     const deleteRef = ref(storage, imageAsset as string);

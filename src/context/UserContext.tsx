@@ -1,14 +1,14 @@
 import { createContext, useReducer } from "react";
 
-import { ActionProps, UserState } from "../types";
+import { ActionProps, AppState } from "../types";
 
 type Props = {
-  reducer: (state: UserState, action: ActionProps) => UserState;
-  initialState: UserState;
+  reducer: (state: AppState, action: ActionProps) => AppState;
+  initialState: AppState;
   children: React.ReactNode;
 };
 
-type StateContextType = [UserState, React.Dispatch<ActionProps>];
+type StateContextType = [AppState, React.Dispatch<ActionProps>];
 
 export const StateContext = createContext<StateContextType>(
   null as unknown as StateContextType,

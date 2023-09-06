@@ -1,13 +1,14 @@
 import { useContext } from "react";
 
-import { UserState } from "../types";
+import { AppState } from "../types";
 import { fetchUser } from "../utils/fetchLocalStorageData";
 import { StateContext } from "./UserContext";
 
 const userInfo = fetchUser();
 
-export const initialState: UserState = {
+export const initialState: AppState = {
   user: userInfo,
+  foods: null,
 };
 
-export const useStateValue = () => useContext(StateContext);
+export const useAppState = () => useContext(StateContext);

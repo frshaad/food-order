@@ -1,4 +1,11 @@
-import { doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+} from "firebase/firestore";
 
 import { db } from "../firebase";
 import { Food } from "../types";
@@ -8,4 +15,13 @@ export const firebaseSaveItem = async (item: Food) => {
   await setDoc(doc(db, "foods", `${item.id}-${item.title}`), item, {
     merge: true,
   });
+};
+
+// Fetch all foods from db
+export const fetchAllFoods = async () => {
+  const items = await getDocs(
+    query(collection(db, "foods"), orderBy("category", "asc")),
+  );
+
+  return items.docs.map((doc) => doc.data());
 };

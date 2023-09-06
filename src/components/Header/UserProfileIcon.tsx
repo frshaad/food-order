@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 import unknownUserAvatar from "../../assets/img/avatar.webp";
-import { useStateValue } from "../../context/initialState";
+import { useAppState } from "../../context/initialState";
 import { ActionType } from "../../types";
 import { loginWithGoogle } from "../../utils/authenticationFn";
 import DropDownMenu from "./DropDownMenu";
 
 const UserProfileIcon = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [state, dispatch] = useStateValue();
+  const [state, dispatch] = useAppState();
   const { user: currentUser } = state;
 
   const handleUserProfileClick = () => {

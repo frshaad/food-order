@@ -26,7 +26,7 @@ const FileUploadInput = ({
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
     const imageFile = e.target.files![0];
-    const imageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+    const imageRef = ref(storage, `images/foods/${imageFile.name}`);
 
     const uploadTask = uploadBytesResumable(imageRef, imageFile);
 

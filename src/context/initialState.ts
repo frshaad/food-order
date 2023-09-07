@@ -9,6 +9,7 @@ const userInfo = fetchUser();
 export const initialState: AppState = {
   user: userInfo,
   foods: null,
+  cartItems: [],
 };
 
 export const useAppState = () => useContext(StateContext);

@@ -3,17 +3,20 @@ import { User } from "firebase/auth";
 export type AppState = {
   user: User | null;
   foods: Food[] | null;
+  cartItems: Food[] | null;
 };
 
 export enum ActionType {
   SET_USER = "SET_USER",
   SET_FOODS = "SET_FOODS",
+  SET_CARTITEM = "SET_CARTITEM",
 }
 
 export type ActionProps = {
   type: ActionType;
   user?: User | null;
   foodItems?: Food[] | null;
+  cartItems?: Food[];
 };
 
 export type FoodCategory =

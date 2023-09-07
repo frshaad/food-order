@@ -9,8 +9,7 @@ import { ActionType, Food } from "./types";
 import { fetchAllFoods } from "./utils/firebaseFns";
 
 const App = () => {
-  const [state, dispatch] = useAppState();
-  const { foods } = state;
+  const [, dispatch] = useAppState();
 
   useEffect(() => {
     const fetchFoodsData = async () => {
@@ -21,15 +20,9 @@ const App = () => {
     fetchFoodsData();
   }, [dispatch]);
 
-  if (!foods) {
-    console.log("Loading...");
-  } else {
-    console.log(foods);
-  }
-
   return (
     <AnimatePresence mode="wait">
-      <div className="flex h-auto w-screen flex-col bg-primary">
+      <div className="flex flex-col bg-primary">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

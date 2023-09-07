@@ -1,10 +1,11 @@
-import { Showcase } from "../components/home";
+import { FruitShowcase, Showcase } from "../components/home";
 
 const Home = () => {
   return (
-    <>
+    <div className="">
       <Showcase />
-    </>
+      <FruitShowcase />
+    </div>
   );
 };
 

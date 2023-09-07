@@ -10,7 +10,7 @@ const FruitShowcase = () => {
   const fruits = foods?.filter((food) => food.category === "Fruits");
 
   return (
-    <section className="my-20">
+    <section>
       <div className="flex justify-between">
         <SectionTitle title="Our Fresh & Healthy Fruits" />
         <div className="hidden items-center gap-3 md:flex">

@@ -48,7 +48,7 @@ const ShowcaseProducts = () => (
 
 const Showcase = () => {
   return (
-    <section className="grid grid-cols-1 gap-2 pt-28 md:h-screen md:pt-32 lg:grid-cols-2 lg:pt-36">
+    <section className="mb-36 grid grid-cols-1 gap-2 pt-14 lg:grid-cols-2">
       <ShowcaseInfo />
       <ShowcaseProducts />
     </section>

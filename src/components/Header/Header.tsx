@@ -10,9 +10,9 @@ const Header = () => {
   const matchesMobile = useMediaQuery("(max-width: 760px)");
 
   return (
-    <header className="fixed z-50 w-screen bg-primary p-1 px-4 shadow-md md:p-6 md:px-16">
+    <header className="fixed top-0 z-50 w-full bg-primary py-4">
       <div
-        className={clsx("justify-between", {
+        className={clsx("mx-auto w-11/12 justify-between", {
           "flex items-center md:hidden": matchesMobile,
           "hidden md:flex": !matchesMobile,
         })}

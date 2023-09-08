@@ -6,12 +6,17 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App.tsx";
 import ReduxProvier from "./app/ReduxProvier.tsx";
+import { initialState } from "./context/initialState.ts";
+import reducer from "./context/reducer.ts";
+import { StateProvider } from "./context/UserContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Router>
       <ReduxProvier>
-        <App />
+        <StateProvider initialState={initialState} reducer={reducer}>
+          <App />
+        </StateProvider>
       </ReduxProvier>
     </Router>
   </React.StrictMode>,

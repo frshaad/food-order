@@ -29,7 +29,7 @@ const FruitShowcase = () => {
         </div>
       </div>
 
-      {fruits ? <RowContainer foodsData={fruits} /> : null}
+      {fruits ? <RowContainer foodsData={fruits} overFlow /> : null}
     </section>
   );
 };

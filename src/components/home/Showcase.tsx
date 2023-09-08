@@ -15,7 +15,7 @@ const BikeDelivery = () => (
 );
 
 const ShowcaseInfo = () => (
-  <div className="flex h-screen flex-1 flex-col gap-4 md:h-auto md:gap-8">
+  <div className="flex flex-1 flex-col gap-4 md:h-auto md:gap-8">
     <BikeDelivery />
     <h2 className="mb-4 text-6xl font-bold leading-normal tracking-wide text-headingColor md:mb-0 md:text-7xl md:leading-relaxed lg:leading-[1.8] ">
       The Fastest Delivery in{" "}
@@ -32,7 +32,7 @@ const ShowcaseInfo = () => (
 );
 
 const ShowcaseProducts = () => (
-  <div className="relative flex-1 py-2 md:mt-24 lg:mt-0">
+  <div className="relative hidden flex-1 py-2 md:mt-24 lg:mt-0 lg:block">
     <img
       src={heroBg}
       alt="hero background"
@@ -48,7 +48,7 @@ const ShowcaseProducts = () => (
 
 const Showcase = () => {
   return (
-    <section className="mb-36 grid grid-cols-1 gap-2 pt-14 lg:grid-cols-2">
+    <section className="mb-16 grid grid-cols-1 gap-2 pt-8 md:pt-14 lg:mb-20 lg:grid-cols-2">
       <ShowcaseInfo />
       <ShowcaseProducts />
     </section>

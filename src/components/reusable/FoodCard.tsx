@@ -13,14 +13,14 @@ const FoodCard = ({ calories, price, title, imageUrl }: Food) => {
   // const { cartItems } = state;
 
   return (
-    <div className="relative my-12 flex h-[175px] w-275 min-w-[275px]  flex-col items-center justify-evenly rounded-lg border bg-cardOverlay px-4 py-2 drop-shadow-sm backdrop-blur-lg transition hover:drop-shadow-xl md:w-300 md:min-w-[300px]">
+    <div className="relative flex h-[175px] w-275 min-w-[275px]  flex-col items-center justify-around rounded-lg border bg-cardOverlay py-2 pr-4 backdrop-blur-lg transition hover:shadow-lg md:w-300 md:min-w-[300px]">
       <div className="flex w-full items-center justify-between">
         <div className="-mt-14 h-36 w-36 drop-shadow-2xl">
           <img src={imageUrl} alt="" className="h-full w-full object-contain" />
         </div>
         <motion.div
           whileTap={{ scale: 0.75 }}
-          className="relative -mt-14 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-orange-500 hover:shadow-lg"
+          className="relative -mt-14 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-orange-500 drop-shadow-sm hover:drop-shadow-xl"
         >
           <MdShoppingBasket className="-translate-x-[2px] text-white" />
           <div className="absolute right-2 top-0 h-2 w-2 text-white">+</div>

@@ -13,9 +13,9 @@ const FoodCard = ({ calories, price, title, imageUrl }: Food) => {
   // const { cartItems } = state;
 
   return (
-    <div className="relative flex h-[175px] w-275 min-w-[275px]  flex-col items-center justify-around rounded-lg border bg-cardOverlay py-2 pr-4 backdrop-blur-lg transition hover:shadow-lg md:w-300 md:min-w-[300px]">
+    <div className="relative flex h-44 w-72 min-w-[275px] flex-col items-center justify-around rounded-lg border bg-cardOverlay py-2 pr-4 backdrop-blur-lg transition hover:shadow-lg md:min-w-[300px]">
       <div className="flex w-full items-center justify-between">
-        <div className="-mt-14 h-36 w-36 drop-shadow-2xl">
+        <div className="-mt-14 h-40 w-40 drop-shadow-2xl">
           <img src={imageUrl} alt="" className="h-full w-full object-contain" />
         </div>
         <motion.div

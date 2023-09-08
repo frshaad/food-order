@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 import { useAppState } from "../../context/initialState";
+import slide from "../../utils/sliderFn";
 import { RowContainer, SectionTitle } from "../reusable";
 
 const FruitShowcase = () => {
@@ -17,12 +18,14 @@ const FruitShowcase = () => {
           <motion.button
             whileTap={{ scale: 0.75 }}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-300 text-xl text-white shadow-sm transition duration-150 ease-in-out hover:bg-orange-500 hover:shadow-lg"
+            onClick={() => slide("left")}
           >
             <MdKeyboardArrowLeft />
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.75 }}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-300 text-xl text-white shadow-sm transition duration-150 ease-in-out hover:bg-orange-500 hover:shadow-lg"
+            onClick={() => slide("right")}
           >
             <MdKeyboardArrowRight />
           </motion.button>

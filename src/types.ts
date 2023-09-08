@@ -38,3 +38,11 @@ export type Food = {
   calories: number;
   qty: number;
 };
+
+export type ShowcaseFood = {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  price: number;
+};

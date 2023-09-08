@@ -13,6 +13,7 @@ type Props = {
 const RowContainer = ({ foodsData, overFlow }: Props) => {
   return (
     <div
+      id="slider"
       className={clsx(
         "no-scrollbar my-12 flex items-center gap-10 scroll-smooth py-12",
         {

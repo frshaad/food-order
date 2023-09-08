@@ -1,6 +1,7 @@
 import delivery from "../../assets/img/delivery.webp";
 import heroBg from "../../assets/img/heroBg.webp";
 import { showcaseData } from "../../constants";
+import { useAppState } from "../../context/initialState";
 import { PrimaryButton, ProductCard } from "../reusable";
 
 const BikeDelivery = () => (
@@ -31,20 +32,31 @@ const ShowcaseInfo = () => (
   </div>
 );
 
-const ShowcaseProducts = () => (
-  <div className="relative hidden flex-1 py-2 md:mt-24 lg:mt-0 lg:block">
-    <img
-      src={heroBg}
-      alt="hero background"
-      className="absolute right-1/2 top-0 h-800 translate-x-1/2 md:h-685 lg:right-0 lg:translate-x-0 2xl:-translate-x-16"
-    />
-    <div className="placc mx-auto grid max-w-xl grid-cols-1 justify-items-center gap-y-20 p-10 pt-16 md:grid-cols-2">
-      {showcaseData.map((item) => (
-        <ProductCard key={item.id} {...item} />
-      ))}
+const ShowcaseProducts = () => {
+  const [{ foods }] = useAppState();
+  const randomFoods = [];
+  if (foods) {
+    for (let i = 0; i < 4; i++) {
+      const randomNumber = Math.floor(Math.random() * foods?.length);
+      randomFoods.push(foods[randomNumber]);
+    }
+  }
+
+  return (
+    <div className="relative hidden flex-1 py-2 md:mt-24 lg:mt-0 lg:block">
+      <img
+        src={heroBg}
+        alt="hero background"
+        className="absolute right-1/2 top-0 h-800 translate-x-1/2 md:h-685 lg:right-0 lg:translate-x-0 2xl:-translate-x-16"
+      />
+      <div className="placc mx-auto grid max-w-xl grid-cols-1 justify-items-center gap-y-20 p-10 pt-16 md:grid-cols-2">
+        {showcaseData.map((item) => (
+          <ProductCard key={item.id} {...item} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Showcase = () => {
   return (

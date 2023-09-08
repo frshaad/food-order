@@ -1,20 +1,24 @@
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import unknownUserAvatar from "../../assets/img/avatar.webp";
-import { useAppState } from "../../context/initialState";
-import { ActionType } from "../../types";
-import { loginWithGoogle } from "../../utils/authenticationFn";
+import { selectCurrentUser, setUser } from "../../features/user/userSlice";
+import { auth } from "../../firebase";
 import DropDownMenu from "./DropDownMenu";
 
-const UserProfileIcon = () => {
-  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [state, dispatch] = useAppState();
-  const { user: currentUser } = state;
+const googleProvider = new GoogleAuthProvider();
 
-  const handleUserProfileClick = () => {
+const UserProfileIcon = () => {
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector(selectCurrentUser);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  const handleUserProfileClick = async () => {
     if (!currentUser) {
-      loginWithGoogle(dispatch);
+      const { user } = await signInWithPopup(auth, googleProvider);
+      dispatch(setUser(user));
     } else {
       setIsDropDownOpen(!isDropDownOpen);
     }
@@ -22,11 +26,8 @@ const UserProfileIcon = () => {
 
   const handleLogOut = () => {
     setIsDropDownOpen(false);
-    localStorage.clear();
-    dispatch({
-      type: ActionType.SET_USER,
-      user: null,
-    });
+    signOut(auth);
+    dispatch(setUser(null));
   };
 
   return (

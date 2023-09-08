@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 import { RootState } from "../../app/store";
 import { db } from "../../firebase";
-import { Food } from "../../types";
+import { Food, FoodCategory } from "../../types";
 
 export const fetchAllFoods = createAsyncThunk("foods/fetchFoods", async () => {
   const items = await getDocs(
@@ -13,7 +14,7 @@ export const fetchAllFoods = createAsyncThunk("foods/fetchFoods", async () => {
 });
 
 export const initialState: {
-  foods: Food[] | null;
+  foods: Food[];
   error: unknown;
   status: "idle" | "loading" | "succeeded" | "failed";
 } = {
@@ -28,6 +29,30 @@ const foodsSlice = createSlice({
   reducers: {
     setFoods: (state, action: PayloadAction<Food[]>) => {
       state.foods = action.payload;
+    },
+    addFood: {
+      prepare: (
+        title: string,
+        category: FoodCategory,
+        imageUrl: string,
+        price: number,
+        calories: number,
+      ) => {
+        return {
+          payload: {
+            id: uuidv4(),
+            title,
+            category,
+            imageUrl,
+            price,
+            calories,
+            qty: 1,
+          },
+        };
+      },
+      reducer: (state, action: PayloadAction<Food>) => {
+        state.foods.push(action.payload);
+      },
     },
   },
   extraReducers: (builder) => {

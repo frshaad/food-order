@@ -5,22 +5,32 @@ import {
   MdShoppingBasket,
 } from "react-icons/md";
 
+import { useAppDispatch } from "../../app/hooks";
+import { addToCart } from "../../features/cart/cartSlice";
 import { Food } from "../../types";
 
-const FoodCard = ({ calories, price, title, imageUrl }: Food) => {
+type Props = {
+  food: Food;
+};
+
+const FoodCard = ({ food }: Props) => {
+  const { calories, imageUrl, price, title } = food;
+  const dispatch = useAppDispatch();
+
   return (
     <div className="relative flex h-44 w-72 min-w-[275px] flex-col items-center justify-around rounded-lg border bg-cardOverlay py-2 pr-4 backdrop-blur-lg transition hover:shadow-lg md:min-w-[300px]">
       <div className="flex w-full items-center justify-between">
         <div className="-mt-14 h-40 w-40 drop-shadow-2xl">
           <img src={imageUrl} alt="" className="h-full w-full object-contain" />
         </div>
-        <motion.div
+        <motion.button
           whileTap={{ scale: 0.75 }}
           className="relative -mt-14 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-orange-500 drop-shadow-sm hover:drop-shadow-xl"
+          onClick={() => dispatch(addToCart(food))}
         >
           <MdShoppingBasket className="-translate-x-[2px] text-white" />
           <div className="absolute right-2 top-0 h-2 w-2 text-white">+</div>
-        </motion.div>
+        </motion.button>
       </div>
 
       <div className="-mt-10 flex w-full flex-col items-end justify-end">

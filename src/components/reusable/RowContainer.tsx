@@ -23,7 +23,7 @@ const RowContainer = ({ foodsData, overFlow }: Props) => {
       )}
     >
       {foodsData && foodsData.length > 0 ? (
-        foodsData.map((food) => <FoodCard key={food.id} {...food} />)
+        foodsData.map((food) => <FoodCard key={food.id} food={food} />)
       ) : (
         <div className="flex w-full flex-col items-center justify-center">
           <img src={notFound} className="h-340" />

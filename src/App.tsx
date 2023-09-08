@@ -22,11 +22,7 @@ const App = () => {
     }
   }, [dispatch, foodsStatus]);
 
-  if (foodsStatus === "loading") {
-    console.log("Loading foods...");
-  } else if (foodsStatus === "succeeded") {
-    console.log("All Foods are laoded");
-  } else if (foodsStatus === "failed") {
+  if (foodsStatus === "failed") {
     console.log("Loading foods failed", foodsError);
   }
 

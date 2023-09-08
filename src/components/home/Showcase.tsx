@@ -1,7 +1,8 @@
+import { useAppSelector } from "../../app/hooks";
 import delivery from "../../assets/img/delivery.webp";
 import heroBg from "../../assets/img/heroBg.webp";
 import { showcaseData } from "../../constants";
-import { useAppState } from "../../context/initialState";
+import { selectAllFoods } from "../../features/foods/foodsSlice";
 import { PrimaryButton, ProductCard } from "../reusable";
 
 const BikeDelivery = () => (
@@ -33,7 +34,7 @@ const ShowcaseInfo = () => (
 );
 
 const ShowcaseProducts = () => {
-  const [{ foods }] = useAppState();
+  const foods = useAppSelector(selectAllFoods);
   const randomFoods = [];
   if (foods) {
     for (let i = 0; i < 4; i++) {

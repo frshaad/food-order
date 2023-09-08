@@ -5,13 +5,9 @@ import {
   MdShoppingBasket,
 } from "react-icons/md";
 
-// import { useAppState } from "../../context/initialState";
 import { Food } from "../../types";
 
 const FoodCard = ({ calories, price, title, imageUrl }: Food) => {
-  // const [state, dispatch] = useAppState();
-  // const { cartItems } = state;
-
   return (
     <div className="relative flex h-44 w-72 min-w-[275px] flex-col items-center justify-around rounded-lg border bg-cardOverlay py-2 pr-4 backdrop-blur-lg transition hover:shadow-lg md:min-w-[300px]">
       <div className="flex w-full items-center justify-between">

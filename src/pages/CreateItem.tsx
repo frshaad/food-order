@@ -1,6 +1,6 @@
+import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { MdOutlineFastfood } from "react-icons/md";
-import { v4 as uuidv4 } from "uuid";
 
 import {
   FileUploadInput,
@@ -41,7 +41,7 @@ const CreateItem = () => {
         console.log("Please select a category for food!");
       } else {
         const foodData: Food = {
-          id: uuidv4(),
+          id: nanoid(),
           title,
           imageUrl: imageAsset,
           calories,

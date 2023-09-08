@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
-import { useAppState } from "../../context/initialState";
+import { useAppSelector } from "../../app/hooks";
+import { selectAllFoods } from "../../features/foods/foodsSlice";
 import slide from "../../utils/sliderFn";
 import { RowContainer, SectionTitle } from "../reusable";
 
 const FruitShowcase = () => {
-  const [state] = useAppState();
-  const { foods } = state;
+  const foods = useAppSelector(selectAllFoods);
   const fruits = foods?.filter((food) => food.category === "Fruits");
 
   return (

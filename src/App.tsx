@@ -2,23 +2,33 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { Layout } from "./components";
-import { useAppState } from "./context/initialState";
+import {
+  fetchAllFoods,
+  getFoodsError,
+  getFoodsStatus,
+} from "./features/foods/foodsSlice";
 import { CreateItem, Home } from "./pages";
-import { ActionType, Food } from "./types";
-import { fetchAllFoods } from "./utils/firebaseFns";
 
 const App = () => {
-  const [, dispatch] = useAppState();
+  const dispatch = useAppDispatch();
+  const foodsStatus = useAppSelector(getFoodsStatus);
+  const foodsError = useAppSelector(getFoodsError);
 
   useEffect(() => {
-    const fetchFoodsData = async () => {
-      await fetchAllFoods().then((data) =>
-        dispatch({ type: ActionType.SET_FOODS, foodItems: data as Food[] }),
-      );
-    };
-    fetchFoodsData();
-  }, [dispatch]);
+    if (foodsStatus === "idle") {
+      dispatch(fetchAllFoods());
+    }
+  }, [dispatch, foodsStatus]);
+
+  if (foodsStatus === "loading") {
+    console.log("Loading foods...");
+  } else if (foodsStatus === "succeeded") {
+    console.log("All Foods are laoded");
+  } else if (foodsStatus === "failed") {
+    console.log("Loading foods failed", foodsError);
+  }
 
   return (
     <AnimatePresence mode="wait">

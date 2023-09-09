@@ -7,7 +7,6 @@ import { FoodCard } from ".";
 type Props = {
   foodsData: Food[];
   overFlow?: boolean;
-  scrollValue?: number;
 };
 
 const RowContainer = ({ foodsData, overFlow }: Props) => {
@@ -26,7 +25,7 @@ const RowContainer = ({ foodsData, overFlow }: Props) => {
         foodsData.map((food) => <FoodCard key={food.id} food={food} />)
       ) : (
         <div className="flex w-full flex-col items-center justify-center">
-          <img src={notFound} className="h-340" />
+          <img src={notFound} className="h-72" />
           <p className="my-2 text-xl font-semibold text-headingColor">
             Items Not Available
           </p>

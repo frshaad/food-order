@@ -1,8 +1,6 @@
-import { useAppSelector } from "../../app/hooks";
 import delivery from "../../assets/img/delivery.webp";
 import heroBg from "../../assets/img/heroBg.webp";
 import { showcaseData } from "../../constants";
-import { selectAllFoods } from "../../features/foods/foodsSlice";
 import { PrimaryButton, ProductCard } from "../reusable";
 
 const BikeDelivery = () => (
@@ -34,15 +32,6 @@ const ShowcaseInfo = () => (
 );
 
 const ShowcaseProducts = () => {
-  const foods = useAppSelector(selectAllFoods);
-  const randomFoods = [];
-  if (foods) {
-    for (let i = 0; i < 4; i++) {
-      const randomNumber = Math.floor(Math.random() * foods?.length);
-      randomFoods.push(foods[randomNumber]);
-    }
-  }
-
   return (
     <div className="relative hidden flex-1 py-2 md:mt-24 lg:mt-0 lg:block">
       <img

@@ -1,10 +1,11 @@
-import { FruitShowcase, Showcase } from "../components/home";
+import { FilteredMenu, FruitShowcase, Showcase } from "../components/home";
 
 const Home = () => {
   return (
     <>
       <Showcase />
       <FruitShowcase />
+      <FilteredMenu />
     </>
   );
 };

@@ -1,3 +1,12 @@
+import { IconType } from "react-icons";
+import {
+  GiBowlOfRice,
+  GiChickenOven,
+  GiCirclingFish,
+  GiFruitBowl,
+} from "react-icons/gi";
+import { IoIceCreamOutline } from "react-icons/io5";
+import { LuCupSoda, LuSoup } from "react-icons/lu";
 import {
   MdGroups,
   MdHomeFilled,
@@ -72,34 +81,42 @@ export const showcaseData: ShowcaseFood[] = [
 export const categories: {
   id: number;
   name: FoodCategory;
+  icon: IconType;
 }[] = [
   {
     id: 1,
     name: "Chicken",
+    icon: GiChickenOven,
   },
   {
     id: 2,
     name: "Curry",
+    icon: LuSoup,
   },
   {
     id: 3,
     name: "Rice",
+    icon: GiBowlOfRice,
   },
   {
     id: 4,
     name: "Fish",
+    icon: GiCirclingFish,
   },
   {
     id: 5,
     name: "Fruits",
+    icon: GiFruitBowl,
   },
   {
     id: 6,
     name: "Icecreams",
+    icon: IoIceCreamOutline,
   },
 
   {
     id: 7,
     name: "Drinks",
+    icon: LuCupSoda,
   },
 ];

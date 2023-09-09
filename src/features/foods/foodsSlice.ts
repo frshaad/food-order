@@ -1,16 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 import { RootState } from "../../app/store";
-import { db } from "../../firebase";
 import { Food } from "../../types";
+import { firebaseFetchAllFoods } from "../../utils/firebaseFns";
 
-export const fetchAllFoods = createAsyncThunk("foods/fetchFoods", async () => {
-  const items = await getDocs(
-    query(collection(db, "foods"), orderBy("category", "asc")),
-  );
-  return items.docs.map((doc) => doc.data());
-});
+export const fetchAllFoods = createAsyncThunk(
+  "foods/fetchFoods",
+  firebaseFetchAllFoods,
+);
 
 export const initialState: {
   foods: Food[];

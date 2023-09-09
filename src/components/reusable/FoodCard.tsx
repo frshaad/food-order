@@ -1,12 +1,17 @@
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import {
+  MdAddShoppingCart,
   MdAttachMoney,
   MdOutlineLocalFireDepartment,
-  MdShoppingBasket,
+  MdOutlineRemoveShoppingCart,
 } from "react-icons/md";
 
-import { useAppDispatch } from "../../app/hooks";
-import { addToCart } from "../../features/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import {
+  selectAllCartItems,
+  toogleAddToCart,
+} from "../../features/cart/cartSlice";
 import { Food } from "../../types";
 
 type Props = {
@@ -14,8 +19,10 @@ type Props = {
 };
 
 const FoodCard = ({ food }: Props) => {
-  const { calories, imageUrl, price, title } = food;
+  const { calories, imageUrl, price, title, id } = food;
   const dispatch = useAppDispatch();
+  const cart = useAppSelector(selectAllCartItems);
+  const isFoodInCart = cart.find((item) => item.id === id);
 
   return (
     <div className="relative flex h-44 w-72 min-w-[275px] flex-col items-center justify-around rounded-lg border bg-cardOverlay py-2 pr-4 backdrop-blur-lg transition hover:shadow-lg md:min-w-[300px]">
@@ -25,11 +32,21 @@ const FoodCard = ({ food }: Props) => {
         </div>
         <motion.button
           whileTap={{ scale: 0.75 }}
-          className="relative -mt-14 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-orange-500 drop-shadow-sm hover:drop-shadow-xl"
-          onClick={() => dispatch(addToCart(food))}
+          className={clsx(
+            "relative -mt-14 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-lg drop-shadow-sm transition hover:drop-shadow-xl",
+            {
+              "bg-orange-500 text-white": !isFoodInCart,
+              "border border-red-500 text-red-500 hover:bg-red-500 hover:text-white":
+                isFoodInCart,
+            },
+          )}
+          onClick={() => dispatch(toogleAddToCart(food))}
         >
-          <MdShoppingBasket className="-translate-x-[2px] text-white" />
-          <div className="absolute right-2 top-0 h-2 w-2 text-white">+</div>
+          {isFoodInCart ? (
+            <MdOutlineRemoveShoppingCart />
+          ) : (
+            <MdAddShoppingCart />
+          )}
         </motion.button>
       </div>
 

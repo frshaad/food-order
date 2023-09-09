@@ -13,6 +13,18 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    toogleAddToCart: (state, action: PayloadAction<Food>) => {
+      const existingItem = state.cartItems.find(
+        (item) => item.id === action.payload.id,
+      );
+      if (existingItem) {
+        state.cartItems = state.cartItems.filter(
+          (item) => item.id !== action.payload.id,
+        );
+      } else {
+        state.cartItems.push(action.payload);
+      }
+    },
     addToCart: (state, action: PayloadAction<Food>) => {
       const existingItem = state.cartItems.find(
         (item) => item.id === action.payload.id,
@@ -32,7 +44,7 @@ const cartSlice = createSlice({
       );
       existingItem
         ? state.cartItems.filter((item) => item.id !== action.payload)
-        : state;
+        : state.cartItems;
     },
     clearCart: (state) => {
       state.cartItems = [];
@@ -41,5 +53,6 @@ const cartSlice = createSlice({
 });
 
 export const selectAllCartItems = (state: RootState) => state.cart.cartItems;
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { toogleAddToCart, addToCart, removeFromCart, clearCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

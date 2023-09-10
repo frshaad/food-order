@@ -11,8 +11,8 @@ const FruitShowcase = () => {
   const fruits = foods?.filter((food) => food.category === "Fruits");
 
   return (
-    <section>
-      <div className="flex justify-between">
+    <section className="mb-5">
+      <div className="mb-8 flex justify-between">
         <SectionTitle title="Our Fresh & Healthy Fruits" />
         <div className="hidden items-center gap-3 md:flex">
           <motion.button

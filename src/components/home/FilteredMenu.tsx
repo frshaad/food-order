@@ -46,14 +46,12 @@ const FilteredMenu = () => {
 
   const FilterSection = () => {
     return (
-      <div
-        className={clsx(
-          "no-scrollbar mx-auto flex w-fit items-center justify-between gap-8 pt-12",
-        )}
-      >
-        {categories.map((item) => (
-          <CategoryBox category={item.name} key={item.id} Icon={item.icon} />
-        ))}
+      <div className="no-scrollbar overflow-auto px-5 py-10 pt-12">
+        <div className="mx-auto flex w-fit items-center justify-between gap-4 md:gap-8">
+          {categories.map((item) => (
+            <CategoryBox category={item.name} key={item.id} Icon={item.icon} />
+          ))}
+        </div>
       </div>
     );
   };

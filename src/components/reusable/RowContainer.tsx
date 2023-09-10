@@ -14,7 +14,7 @@ const RowContainer = ({ foodsData, overFlow }: Props) => {
     <div
       id="slider"
       className={clsx(
-        "no-scrollbar my-12 flex items-center gap-10 scroll-smooth py-12",
+        "no-scrollbar my-2 flex items-center gap-10 scroll-smooth py-12",
         {
           "scrollbar-none overflow-auto overflow-x-visible": overFlow,
           "flex-wrap justify-center overflow-x-hidden": !overFlow,

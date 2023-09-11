@@ -49,10 +49,30 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
     },
+    increaseQty: (state, action: PayloadAction<string>) => {
+      state.cartItems.map((item) =>
+        item.id === action.payload ? item.qty++ : state.cartItems,
+      );
+    },
+    decreaseQty: (state, action: PayloadAction<string>) => {
+      state.cartItems.map((item) =>
+        item.id === action.payload
+          ? item.qty === 1
+            ? state.cartItems.filter((food) => food.id !== item.id)
+            : item.qty--
+          : state.cartItems,
+      );
+    },
   },
 });
 
 export const selectAllCartItems = (state: RootState) => state.cart.cartItems;
-export const { toogleAddToCart, addToCart, removeFromCart, clearCart } =
-  cartSlice.actions;
+export const {
+  toogleAddToCart,
+  addToCart,
+  removeFromCart,
+  clearCart,
+  decreaseQty,
+  increaseQty,
+} = cartSlice.actions;
 export default cartSlice.reducer;

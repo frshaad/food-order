@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -6,9 +6,8 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import unknownUserAvatar from "../../assets/img/avatar.webp";
 import { selectCurrentUser, setUser } from "../../features/user/userSlice";
 import { auth } from "../../firebase";
+import { loginWithGoogle } from "../../utils/login";
 import DropDownMenu from "./DropDownMenu";
-
-const googleProvider = new GoogleAuthProvider();
 
 const UserProfileIcon = () => {
   const dispatch = useAppDispatch();
@@ -17,8 +16,7 @@ const UserProfileIcon = () => {
 
   const handleUserProfileClick = async () => {
     if (!currentUser) {
-      const { user } = await signInWithPopup(auth, googleProvider);
-      dispatch(setUser(user));
+      loginWithGoogle(dispatch);
     } else {
       setIsDropDownOpen(!isDropDownOpen);
     }

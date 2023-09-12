@@ -6,7 +6,11 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import UserProfileIcon from "./UserProfileIcon";
 
-const Header = () => {
+type Props = {
+  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Header = ({ setIsCartOpen }: Props) => {
   const matchesMobile = useMediaQuery("(max-width: 760px)");
 
   return (
@@ -17,11 +21,11 @@ const Header = () => {
           "hidden md:flex": !matchesMobile,
         })}
       >
-        {matchesMobile ? <CartButton /> : null}
+        {matchesMobile ? <CartButton setIsCartOpen={setIsCartOpen} /> : null}
         <Logo />
         <div className="flex items-center gap-8">
           {matchesMobile ? null : <NavLinks />}
-          {matchesMobile ? null : <CartButton />}
+          {matchesMobile ? null : <CartButton setIsCartOpen={setIsCartOpen} />}
           <UserProfileIcon />
         </div>
       </div>

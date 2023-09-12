@@ -5,7 +5,11 @@ import { MdShoppingBasket } from "react-icons/md";
 import { useAppSelector } from "../../app/hooks";
 import { selectAllCartItems } from "../../features/cart/cartSlice";
 
-const CartButton = () => {
+type Props = {
+  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const CartButton = ({ setIsCartOpen }: Props) => {
   const cartItems = useAppSelector(selectAllCartItems);
   const isCartEmpty = cartItems.length === 0;
 
@@ -13,6 +17,7 @@ const CartButton = () => {
     <motion.button
       className="relative rounded-full p-2 text-2xl text-textColor"
       whileTap={{ scale: 0.9 }}
+      onClick={() => setIsCartOpen(true)}
     >
       <MdShoppingBasket />
       <span

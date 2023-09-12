@@ -1,3 +1,4 @@
+import { AnyAction } from "@reduxjs/toolkit";
 import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -18,7 +19,7 @@ const App = () => {
 
   useEffect(() => {
     if (foodsStatus === "idle") {
-      dispatch(fetchAllFoods());
+      dispatch(fetchAllFoods() as unknown as AnyAction);
     }
   }, [dispatch, foodsStatus]);
 

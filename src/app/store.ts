@@ -10,6 +10,7 @@ import userReducer from "../features/user/userSlice";
 const rootPersistConfig = {
   key: "root",
   storage,
+  blacklist: ["foods"],
 };
 
 const userPersistConfig = {
@@ -17,10 +18,10 @@ const userPersistConfig = {
   storage,
 };
 
-const foodsPersistConfig = {
-  key: "foods",
-  storage,
-};
+// const foodsPersistConfig = {
+//   key: "foods",
+//   storage,
+// };
 
 const cartPersistConfig = {
   key: "cart",
@@ -29,7 +30,7 @@ const cartPersistConfig = {
 
 const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
-  foods: persistReducer(foodsPersistConfig, foodsReducer),
+  foods: foodsReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
 });
 

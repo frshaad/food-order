@@ -22,5 +22,5 @@ export const firebaseFetchAllFoods = async () => {
   const items = await getDocs(
     query(collection(db, "foods"), orderBy("category", "asc")),
   );
-  return items.docs.map((doc) => doc.data());
+  return items.docs.map((doc) => doc.data()) as Food[];
 };

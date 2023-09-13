@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Cart, Header } from ".";
+import Cart from "./cart/Cart";
+import Header from "./header/Header";
 
 const Layout = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

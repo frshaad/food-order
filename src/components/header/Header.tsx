@@ -14,7 +14,7 @@ const Header = ({ setIsCartOpen }: Props) => {
   const matchesMobile = useMediaQuery("(max-width: 760px)");
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-primary py-4">
+    <header className="fixed top-0 z-50 w-full bg-primary/80 py-4 drop-shadow-md backdrop-blur-xl">
       <div
         className={clsx("mx-auto w-11/12 justify-between", {
           "flex items-center md:hidden": matchesMobile,

@@ -18,11 +18,6 @@ const userPersistConfig = {
   storage,
 };
 
-// const foodsPersistConfig = {
-//   key: "foods",
-//   storage,
-// };
-
 const cartPersistConfig = {
   key: "cart",
   storage,
